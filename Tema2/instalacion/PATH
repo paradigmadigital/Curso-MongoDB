@@ -1,0 +1,2 @@
+MONGODB_PATH=/opt/mongodb-linux-x86_64-ubuntu1404-3.0.6/bin
+PATH=$PATH:$MONGODB_PATH

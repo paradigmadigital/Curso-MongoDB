@@ -1,0 +1,12 @@
+cd /home/paradigma/Escritorio/CursoMongoDB/Tema2/instalacion
+
+sudo tar -xzvf mongodb-linux-3.0.6.tgz -C /opt/
+
+gedit ~/.bashrc
+
+
+cd 
+. .bashrc
+mongod --version
+
+
