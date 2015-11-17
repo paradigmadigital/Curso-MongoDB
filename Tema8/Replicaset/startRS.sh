@@ -11,6 +11,6 @@ mongod --replSet RS1 --dbpath /data/RS1_3 --port 27019 --noprealloc --nojournal 
 
 #initiate replica set for each shard
 sleep 2
-mongo --port 27017 --shell createRS1.js &
-
-mongo < comandosSharding.in
+mongo --shell createRS1.js &
+#Populate replication database
+mongo --shell populateDB.js
