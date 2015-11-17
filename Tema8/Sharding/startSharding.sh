@@ -1,4 +1,5 @@
-reate path for config servers
+#/bin/bash
+#Create path for config servers
 mkdir -p /data/configdb1
 mkdir -p /data/configdb2
 mkdir -p /data/configdb3
