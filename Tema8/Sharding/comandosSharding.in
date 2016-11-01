@@ -1,10 +1,9 @@
 use mishard
-sh.addShard("RS1/mongodb:27018");
-sh.addShard("RS2/mongodb:27028");
+sh.addShard("shard1/mongodb:27018");
+sh.addShard("shard2/mongodb:27028");
 sh.enableSharding("mishard");
 db.particion.createIndex({x:1});
 sh.shardCollection("mishard.particion",{x:1});
 for (i = 0 ; i < 100000 ; i ++ ){
    db.particion.insert({x:i,y:i*2,z:i-100});
 }
-exit;

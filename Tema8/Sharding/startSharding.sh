@@ -2,10 +2,10 @@
 #Create directory for mongos logs
 mkdir -p /data/mongos
 #Create path for config servers
-mkdir -p /data/configdb1
+mkdir -p /data/configdb
 
 #Start Config Server
-mongod --configsvr --dbpath /data/configdb1 --fork --logpath /data/configdb1/mongod.log --noprealloc --port 27019 --replSet config &
+mongod --configsvr --dbpath /data/configdb --fork --logpath /data/configdb/mongod.log --noprealloc --port 27019 --replSet config &
 
 
 #Create path for shard servers
