@@ -23,7 +23,7 @@ mongo --port 27018  createRS1.js &
 mongo --port 27028  createRS2.js &
 
 #Start mongos
-echo "waiting 10 secs to starting config servers and shards after starting mongos, be patient please"
+echo "waiting 10 secs to starting config servers and shards after starting mongos, be patient please \n"
 echo -ne '           (0%)\r'
 sleep 1
 echo -ne '#           (10%)\r'
@@ -46,7 +46,8 @@ echo -ne '#########   (90%)\r'
 sleep 1
 echo -ne '##########  (100%)\r'
 
-echo "-ne \n Initializing mongos "
+echo -ne '\n'
+echo "Initializing mongos "
 
 mongos --configdb config/mongodb:27019 --fork --logpath /data/mongos/mongos.log &
 
