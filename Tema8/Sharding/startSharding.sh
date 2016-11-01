@@ -47,10 +47,12 @@ sleep 1
 echo -ne '##########  (100%)\r'
 
 echo -ne '\n'
-echo "Initializing mongos "
+echo "Initializing mongos, be patient "
 
 mongos --configdb config/mongodb:27019 --fork --logpath /data/mongos/mongos.log &
+#waiting 5 seconds to let mongos start
 
+sleep 5
 
 #add shards to shard cluster
 mongo < comandosSharding.in
