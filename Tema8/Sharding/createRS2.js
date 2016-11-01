@@ -1,5 +1,5 @@
 config = {
-    _id : "RS2",
+    _id : "shard2",
      members : [
          {_id : 0, host : "mongodb:27028"}
      ]
