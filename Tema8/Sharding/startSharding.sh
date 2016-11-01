@@ -23,11 +23,33 @@ mongo --port 27018  createRS1.js &
 mongo --port 27028  createRS2.js &
 
 #Start mongos
-echo "waiting 5 secs to starting config servers and shards after starting mongos"
-sleep 5
+echo "waiting 10 secs to starting config servers and shards after starting mongos, be patient please"
+echo -ne '           (0%)\r'
+sleep 1
+echo -ne '#           (10%)\r'
+sleep 1
+echo -ne '##          (20%)\r'
+sleep 1
+echo -ne '###         (30%)\r'
+sleep 1
+echo -ne '####        (40%)\r'
+sleep 1
+echo -ne '#####       (50%)\r'
+sleep 1
+echo -ne '######      (60%)\r'
+sleep 1
+echo -ne '#######     (70%)\r'
+sleep 1
+echo -ne '########    (80%)\r'
+sleep 1
+echo -ne '#########   (90%)\r'
+sleep 1
+echo -ne '##########  (100%)\r'
+
+echo "-ne \n Initializing mongos "
+
 mongos --configdb config/mongodb:27019 --fork --logpath /data/mongos/mongos.log &
 
 
 #add shards to shard cluster
-sleep 5
 mongo < comandosSharding.in
