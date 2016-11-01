@@ -1,5 +1,5 @@
 config = {
-    _id : "RS1",
+    _id : "config",
      members : [
          {_id : 0, host : "mongodb:27018"}
      ]

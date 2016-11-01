@@ -1,31 +1,31 @@
 #/bin/bash
+#Create directory for mongos logs
+mkdir -p /data/mongos
 #Create path for config servers
 mkdir -p /data/configdb1
-mkdir -p /data/configdb2
-mkdir -p /data/configdb3
 
 #Start Config Server
-mongod --configsvr --dbpath /data/configdb1 --port 27019 &
-mongod --configsvr --dbpath /data/configdb2 --port 27029 &
-mongod --configsvr --dbpath /data/configdb3 --port 27039 &
+mongod --configsvr --dbpath /data/configdb1 --fork --logpath /data/configdb1/mongod.log --noprealloc --port 27019 --replSet config &
+
 
 #Create path for shard servers
 mkdir -p /data/shard1
 mkdir -p /data/shard2
 
 #Start shard servers
-mongod --shardsvr --replSet RS1 --dbpath /data/shard1 --port 27018 --noprealloc --nojournal &
-mongod --shardsvr --replSet RS2 --dbpath /data/shard2 --port 27028 --noprealloc --nojournal &
+mongod --shardsvr --replSet shard1 --dbpath /data/shard1 --port 27018 --noprealloc --nojournal --fork --logpath /data/shard1/mongod.log &
+mongod --shardsvr --replSet shard2 --dbpath /data/shard2 --port 27028 --noprealloc --nojournal --fork --logpath /data/shard2/mongod.log &
 
-#initiate replica set for each shard
+#initiate replica set for config server and each shard
 sleep 2
-mongo --port 27018 --shell createRS1.js &
-mongo --port 27028 --shell createRS2.js &
+mongo --port 27019  createConfig.js &
+mongo --port 27018  createRS1.js &
+mongo --port 27028  createRS2.js &
 
 #Start mongos
-echo "waiting 5 secs to starting config servers after starting mongos"
+echo "waiting 5 secs to starting config servers and shards after starting mongos"
 sleep 5
-mongos --configdb paradigma:27019,paradigma:27029,paradigma:27039 &
+mongos --configdb config/mongodb:27019 --fork --logpath /data/mongos/mongos.log &
 
 
 #add shards to shard cluster
