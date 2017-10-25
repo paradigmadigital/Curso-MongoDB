@@ -8,6 +8,5 @@ Markup: https://docs.google.com/document/d/1xWNrxHDEaB69znwu4oHmZbueB-qt3_BkQpRp
  https://drive.google.com/file/d/0B00ikBXiT-tTTGhlUlpiUHBpcEU/view?usp=sharing
 
 
-
-## Cuaderno de ejercicios
-https://drive.google.com/open?id=1xWNrxHDEaB69znwu4oHmZbueB-qt3_BkQpRpswzYG8k
+## Máquina virtual
+https://drive.google.com/open?id=0B00ikBXiT-tTTlJHQ2l6Wk1fQ0E
